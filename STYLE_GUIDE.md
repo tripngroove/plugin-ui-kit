@@ -78,8 +78,13 @@ helpers in `theme/Drawing.h`, widgets in `widgets/`.
   3 steps"), shown live while dragging.
 - **Unused areas** keep their colours under a grey veil (`drawUnusedArea`), so it is clear what
   is kept but not playing.
-- Drag inside values to step through them; click to pick from a list. Leave the scroll wheel
-  to scrolling the editor.
+- Drag inside values to step through them (8 pixels a step, faster for wide ranges so any range
+  fits in about 256 pixels). Leave the scroll wheel to scrolling the editor.
+- Click a value to change it: a short set of named choices ("Forward", "Rest", 1/16...) opens
+  a list; a number with a wide range (MIDI CC numbers and values, 0 to 127) opens a field to
+  type into, never a list (`ValueBox::Entry::typed`). Return or clicking away keeps what was
+  typed, Escape leaves the value as it was. A typed value's box is as wide as its widest value,
+  so the row doesn't shift while dragging.
 
 ## Tabs
 
